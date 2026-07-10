@@ -1,8 +1,11 @@
 #!/bin/bash -e
 
-# If running the rails server then create or migrate existing database
+# If running the rails server then create or migrate existing database.
+# Deliberately not db:prepare: it auto-runs db:seed on first creation, and our
+# seeds script calls the API over HTTP, which isn't listening yet at this point
+# in boot. Seeds are meant to be run manually after the app is up.
 if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
-  ./bin/rails db:prepare
+  ./bin/rails db:create db:migrate
 fi
 
 exec "${@}"
