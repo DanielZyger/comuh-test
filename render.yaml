@@ -1,0 +1,34 @@
+databases:
+  - name: comuh-db
+    plan: free
+    databaseName: comuh_production
+    user: comuh
+
+services:
+  - type: web
+    name: comuh-backend
+    runtime: docker
+    plan: free
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    healthCheckPath: /up
+    envVars:
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: comuh-db
+          property: connectionString
+      - key: FRONTEND_ORIGIN
+        value: https://comuh-frontend.onrender.com
+
+  - type: web
+    name: comuh-frontend
+    runtime: node
+    plan: free
+    rootDir: ./frontend
+    buildCommand: npm install && npm run build
+    startCommand: npx next start -p $PORT
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        value: https://comuh-backend.onrender.com

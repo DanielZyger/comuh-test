@@ -1,4 +1,4 @@
-# Popula o banco fazendo chamadas HTTP reais para a própria API. 
+# Popula o banco fazendo chamadas HTTP reais para a própria API.
 # Por isso o servidor Rails precisa estar rodando antes de executar `bin/rails db:seed`.
 #
 # Comunidades são a única exceção: como não existe endpoint de criação de
