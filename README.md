@@ -13,7 +13,16 @@ análise de sentimento básica.
 - [x] Frontend (Next.js + TypeScript + Tailwind)
 - [x] Seeds (via chamadas HTTP à própria API)
 - [x] Testes automatizados (RSpec, 100% de cobertura de linhas)
-- [ ] Deploy
+- [x] Deploy (Render)
+
+## Deploy
+
+Aplicação no ar no [Render](https://render.com):
+
+- **Frontend:** https://comuh-frontend.onrender.com
+- **Backend (API):** https://comuh-backend.onrender.com
+
+Plano free - alta latência
 
 ## Stack e por que escolhi cada peça
 
